@@ -140,9 +140,12 @@ HIDDEN_SIZE = 300
 EPOCH = 3
 LEARNING_RATE = 0.001
 
-# model = WindowClassifier(len(word2index),EMBEDDING_SIZE,WINDOW_SIZE,HIDDEN_SIZE,len(tag2index))
-model = bi_lstm(len(word2index),EMBEDDING_SIZE,WINDOW_SIZE,HIDDEN_SIZE,len(tag2index),BATCH_SIZE)
+if WindowClassifier:
+    model = WindowClassifier(len(word2index),EMBEDDING_SIZE,WINDOW_SIZE,HIDDEN_SIZE,len(tag2index))
+if bi_lstm:
+    model = bi_lstm(len(word2index),EMBEDDING_SIZE,WINDOW_SIZE,HIDDEN_SIZE,len(tag2index),BATCH_SIZE)
 print model
+
 if cuda:
     model = model.cuda()
 loss_function = nn.CrossEntropyLoss()
