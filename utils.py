@@ -1,6 +1,6 @@
 import random
 
-
+#generator example
 def getBatch(batch_size, train_data):
     random.shuffle(train_data)
     sindex = 0
